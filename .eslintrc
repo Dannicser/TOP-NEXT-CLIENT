@@ -3,6 +3,7 @@
   "parser": "@typescript-eslint/parser", // работает с ts
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "max-line-length": 120,
     "semi": "off",
     "@typescript-eslint/semi": ["warn"],
     "@typescript-eslint/no-empty-interface": [
