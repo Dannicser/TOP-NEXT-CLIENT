@@ -2,8 +2,7 @@
   "extends": ["stylelint-config-standard", "stylelint-order-config-standard"],
   "plugins": ["stylelint-order"],
   "rules": {
-    "indentation": ["tab"],
-    "color-hex-case": "upper",
+    "color-hex-case": "lower",
     "max-line-length": 120
   }
 }
