@@ -1,4 +1,4 @@
-import { Htag, Button, Paragraph } from "../components";
+import { Htag, Button, Paragraph, Tag } from "../components";
 
 export default function Home(): JSX.Element {
   return (
@@ -9,6 +9,13 @@ export default function Home(): JSX.Element {
         хорошо справляются с нагрузкой, так зачем загонять специалиста в душный офис. В этой профессии важным считается вдохновение, поэтому дизайнеры
         ищут его в разных местах.
       </Paragraph>
+      <Tag color="ghost">ghost</Tag>
+      <Tag color="green">green</Tag>
+      <Tag color="grey">grey</Tag>
+      <Tag color="primary">primary</Tag>
+      <Tag color="red">red</Tag>
+      <br />
+      <br />
       <Button arrow="right">Primary</Button>
       <Button arrow="right" appearance="ghost">
         Ghost
