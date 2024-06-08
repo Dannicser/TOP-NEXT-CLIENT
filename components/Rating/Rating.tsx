@@ -3,12 +3,21 @@ import { useState, KeyboardEvent } from "react";
 import { IRatingProps } from "./Rating.props";
 
 import StarIcon from "./assets/star.svg";
+import CircleIcon from "./assets/circle.svg";
 
 import cn from "classnames";
 
 import styles from "./Rating.module.css";
 
-export const Rating: React.FC<IRatingProps> = ({ isEditable = true, size = "medium", rating, setRating, ...props }): JSX.Element => {
+export const Rating: React.FC<IRatingProps> = ({
+  isEditable = true,
+  size = "medium",
+  rating,
+  setRating,
+  theme = "primary",
+  form = "star",
+  ...props
+}): JSX.Element => {
   const [isSelected, setIsSelected] = useState<boolean>(() => {
     return isEditable ? false : true;
   });
@@ -38,9 +47,28 @@ export const Rating: React.FC<IRatingProps> = ({ isEditable = true, size = "medi
     }
   }
 
-  return (
-    <div {...props}>
-      {ratingArray.map((currentRating, index) => {
+  function getFormRating(currentRating: number, index: number) {
+    switch (form) {
+      case "circle":
+        return (
+          <CircleIcon
+            key={index}
+            onClick={() => onChoseRating(currentRating)}
+            onMouseEnter={() => onEnterDisplayRating(currentRating)}
+            onMouseLeave={() => onLeaveDisplayRating()}
+            onKeyDown={(e: KeyboardEvent<SVGElement>) => onHandleEnter(e, currentRating)}
+            className={cn(styles.star, {
+              [styles.small]: size === "small",
+              [styles.medium]: size === "medium",
+              [styles.large]: size === "large",
+              [styles.isEditable]: isEditable,
+              [styles[theme]]: rating >= currentRating,
+            })}
+            tabIndex={isEditable ? 0 : -1}
+          />
+        );
+
+      case "star":
         return (
           <StarIcon
             key={index}
@@ -53,11 +81,18 @@ export const Rating: React.FC<IRatingProps> = ({ isEditable = true, size = "medi
               [styles.medium]: size === "medium",
               [styles.large]: size === "large",
               [styles.isEditable]: isEditable,
-              [styles.filled]: rating >= currentRating,
+              [styles[theme]]: rating >= currentRating,
             })}
             tabIndex={isEditable ? 0 : -1}
           />
         );
+    }
+  }
+
+  return (
+    <div {...props}>
+      {ratingArray.map((currentRating, index) => {
+        return getFormRating(currentRating, index);
       })}
     </div>
   );

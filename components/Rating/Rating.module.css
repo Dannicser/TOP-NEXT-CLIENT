@@ -4,10 +4,6 @@
   transition: all 0.4s;
 }
 
-.filled {
-  fill: var(--primary);
-}
-
 .isEditable {
   cursor: pointer;
 }
@@ -25,4 +21,16 @@
 .large {
   width: 25px;
   height: 25px;
+}
+
+.primary {
+  fill: var(--primary);
+}
+
+.success {
+  fill: var(--green);
+}
+
+.danger {
+  fill: var(--red);
 }
