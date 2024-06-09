@@ -1,6 +1,6 @@
 .star {
   margin-right: 5px;
-  fill: var(--gray-light);
+  fill: var(--grey-light);
   transition: all 0.4s;
 }
 
